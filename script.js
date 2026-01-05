@@ -32,11 +32,11 @@ formSectionElement.addEventListener("submit", (event) => {
     function calcoloOfferta(){
       const ticketPriceStandard = distanceValue * 0.21
       //  applicare sconto 20% se età =< 18 anni
-      if (ageValue == 1) {
+      if (ageValue === 1) {
         console.log("2")
         return (ticketPriceStandard * 0.8).toFixed(2)
         // applicare sconto 40% se età => 65 anni
-      } else if (ageValue == 3){
+      } else if (ageValue === 3){
         console.log("3")
         return (ticketPriceStandard * 0.6).toFixed(2)
       } else {
