@@ -12,24 +12,12 @@ const ticketCarrozzaField = document.getElementById("ticketCarrozza")
 const ticketCodeField = document.getElementById("ticketCode")
 const ticketPriceField = document.getElementById("ticketPrice")
 
+const kmPrice = 0.21
+let distanceValue
+let ticketPriceStandard = distanceValue * kmPrice
+let ageValue
 
-formSectionElement.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const distanceValue = Number(distanceElement.value)
-
-    const ageValue = ageElement.value
-    const newDivAgeEl = document.createElement("div")
-    if (ageValue === "1"){
-      newDivAgeEl.textContent = "Offerta Young -20%"
-    } else if (ageValue === "2"){
-      newDivAgeEl.textContent = "Prezzo Standard"
-    } else {
-      newDivAgeEl.textContent = "Offerta Over60 -40%"
-    }
-    ticketOfferField.append(newDivAgeEl)
-
-
-    function calcoloOfferta(){
+ function calcoloOfferta(){
       const ticketPriceStandard = distanceValue * 0.21
       //  applicare sconto 20% se età =< 18 anni
       if (ageValue === 1) {
@@ -43,6 +31,24 @@ formSectionElement.addEventListener("submit", (event) => {
         console.log("1")
         return ticketPriceStandard.toFixed(2)
       }}
+
+formSectionElement.addEventListener("submit", (event) => {
+    event.preventDefault();
+    distanceValue = Number(distanceElement.value)
+
+    ageValue = ageElement.value
+    const newDivAgeEl = document.createElement("div")
+    if (ageValue === "1"){
+      newDivAgeEl.textContent = "Offerta Young -20%"
+    } else if (ageValue === "2"){
+      newDivAgeEl.textContent = "Prezzo Standard"
+    } else {
+      newDivAgeEl.textContent = "Offerta Over60 -40%"
+    }
+    ticketOfferField.append(newDivAgeEl)
+
+
+   
 
     const newDivPriceEl = document.createElement("div")
     newDivPriceEl.textContent = `${calcoloOfferta()}€`
