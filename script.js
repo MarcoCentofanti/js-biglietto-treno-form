@@ -24,9 +24,21 @@ formSectionElement.addEventListener("submit", (event) => {
     const distanceValue = distanceElement.value
     const ageValue = ageElement.value
 
-    const newDivEl = document.createElement("div")
-    newDivEl.textContent = userNameValue
-    ticketNameField.append(newDivEl)
+    const newDivNameEl = document.createElement("div")
+    newDivNameEl.textContent = userNameValue
+    ticketNameField.append(newDivNameEl)
+    
+    const newDivAgeEl = document.createElement("div")
+    if (ageValue === "1"){
+      newDivAgeEl.textContent = "Offerta Young -20%"
+    } else if (ageValue === "2"){
+      newDivAgeEl.textContent = "Prezzo Standard"
+    } else {
+      newDivAgeEl.textContent = "Offerta Over60 -40%"
+    }
+    ticketOfferField.append(newDivAgeEl)
+    
+
 })
 
 
