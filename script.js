@@ -12,14 +12,26 @@ const ticketCarrozzaField = document.getElementById("ticketCarrozza")
 const ticketCodeField = document.getElementById("ticketCode")
 const ticketPriceField = document.getElementById("ticketPrice")
 
-const kmPrice = 0.21
-// let ticketPriceFinal
-
-//  calcolare il prezzo base del biglietto (0.21€/Km)
-// const ticketPriceStandard = distance * kmPrice
 
 formSectionElement.addEventListener("submit", (event) => {
     event.preventDefault();
+function calcoloOfferta(){
+  const ticketPriceStandard = distanceValue * 0.21
+  //  applicare sconto 20% se età =< 18 anni
+  if (ageValue == 1) {
+    console.log("2")
+    return (ticketPriceStandard * 0.8).toFixed(2)
+    // applicare sconto 40% se età => 65 anni
+  } else if (ageValue == 3){
+    console.log("3")
+    return (ticketPriceStandard * 0.6).toFixed(2)
+  } else {
+    console.log("1")
+    return ticketPriceStandard.toFixed(2)
+  }}
+
+
+
     const userNameValue = userNameElement.value
     const distanceValue = distanceElement.value
     const ageValue = ageElement.value
@@ -38,23 +50,16 @@ formSectionElement.addEventListener("submit", (event) => {
     }
     ticketOfferField.append(newDivAgeEl)
     
-
+    const newDivCarEl = document.createElement("div")
+    newDivCarEl.textContent = Math.floor(Math.random() * 9);
+    ticketCarrozzaField.append(newDivCarEl)
+    
+    const newDivCodeEl = document.createElement("div")
+    newDivCodeEl.textContent = Math.floor(Math.random() * (99999 - 10000) + 10000);
+    ticketCodeField.append(newDivCodeEl)
+   
+    const newDivPriceEl = document.createElement("div")
+    newDivPriceEl.textContent = `${calcoloOfferta()}€`
+    ticketPriceField.append(newDivPriceEl)
 })
 
-
-function calcoloOfferta(){
-  //  applicare sconto 20% se età =< 18 anni
-  if (age.value == 1) {
-   return (ticketPriceStandard * 0.8)
-    // applicare sconto 40% se età => 65 anni
-  } else if (age.value == 3){
-     return (ticketPriceStandard * 0.6)
-  } else {
-    return ticketPriceStandard
-  }
-  //stampare output con solo 2 decimali
-  console.log(`il costo del tuo biglietto è ${ticketPriceFinal.toFixed(2)}€`);
-}
-  
-  // 100km, 10 anni => prezzo corretto:  €16.80
-  // 100km, 70 anni => prezzo corretto: €12.60
