@@ -71,4 +71,20 @@ formSectionElement.addEventListener("submit", (event) => {
    
     
 })
+// const elementsToReset = document.querySelectorAll(".toRemove")
+function clearTicket(fieldElement){
+  while (fieldElement.children.length > 1){
+    fieldElement.lastElementChild.remove()
+  }
+}
+
+buttonResetElement.addEventListener("click", () => {
+clearTicket(ticketNameField)
+clearTicket(ticketOfferField)
+clearTicket(ticketCarrozzaField)
+clearTicket(ticketCodeField)
+clearTicket(ticketPriceField)
+
+})
+
 
